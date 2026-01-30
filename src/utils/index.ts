@@ -72,11 +72,17 @@ export const GetCountriesByRegion = async (
   }
   return filtered;
 };
-export const GetCountries = async (src?: string): Promise<Country[] | []> => {
+export const GetCountries = async (
+  src?: string,
+  country?: string[]
+): Promise<Country[] | []> => {
   let url =
     "https://venkatmcajj.github.io/react-country-state-city/data/countriesminified.json";
   if (src) url = src + "/countriesminified.json";
   const countries = await fetch(url).then((res) => res.json());
+  if (country && country.length > 0) {
+    return countries.filter((c: Country) => country.includes(c.name));
+  }
   return countries as Array<Country>;
 };
 

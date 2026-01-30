@@ -9,6 +9,7 @@ import { GetCountries, GetCountriesByRegion } from "../utils";
 import Dropdown from "./Dropdown";
 
 type PageProps = InputHTMLAttributes<HTMLInputElement> & {
+  countries?: string[];
   defaultValue?: Country;
   containerClassName?: string;
   inputClassName?: string;
@@ -20,6 +21,7 @@ type PageProps = InputHTMLAttributes<HTMLInputElement> & {
   src?: string;
 };
 const CountrySelect = ({
+  countries,
   containerClassName,
   inputClassName,
   onTextChange,
@@ -37,10 +39,17 @@ const CountrySelect = ({
       GetCountriesByRegion(region, src).then((data) => {
         setCountries(data);
       });
-    else
-      GetCountries(src).then((data) => {
-        setCountries(data);
-      });
+    else {
+      if (countries) {
+        GetCountries(src, countries).then((data) => {
+          setCountries(data);
+        });
+      } else {
+        GetCountries(src).then((data) => {
+          setCountries(data);
+        });
+      }
+    }
   }, [region, src]);
   return (
     <>

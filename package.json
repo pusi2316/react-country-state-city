@@ -85,7 +85,6 @@
     "jest-canvas-mock": "^2.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-fetch-mock": "^3.0.3",
-    "node-sass": "^8.0.0",
     "prettier": "^2.8.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -96,6 +95,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sass": "^1.12.19",
     "rollup-plugin-typescript2": "^0.34.1",
+    "sass": "^1.97.3",
     "style-loader": "^3.3.2",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
